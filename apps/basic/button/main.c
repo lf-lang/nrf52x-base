@@ -9,8 +9,8 @@
 #include "nrf_gpio.h"
 
 // Pin definitions
-#define LED NRF_GPIO_PIN_MAP(0,17)
-#define BTN NRF_GPIO_PIN_MAP(0,13)
+#define LED NRF_GPIO_PIN_MAP(0,13)
+#define BTN NRF_GPIO_PIN_MAP(0,11)
 
 int main(void) {
 
