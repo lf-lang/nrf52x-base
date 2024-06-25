@@ -7,29 +7,29 @@ INCLUDES_MAKEFILE = 1
 
 
 # ---- This repo's files
-REPO_HEADER_PATHS += $(NRF_BASE_DIR)/lib/
-REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/drivers/*/))
-REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/*/))
-REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/simple_ble/*/))
-REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/simple_logger/*/))
-REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/simple_thread/*/))
-REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/google_cloud/*/))
-REPO_HEADER_PATHS += $(NRF_BASE_DIR)/lib/nanopb/
-REPO_SOURCE_PATHS += $(NRF_BASE_DIR)/lib/
-REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/drivers/*/))
-REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/*/))
-REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/simple_ble/*/))
-REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/simple_logger/*/))
-REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/simple_thread/*/))
-REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/google_cloud/*/))
-REPO_SOURCE_PATHS += $(NRF_BASE_DIR)/lib/nanopb/
+REPO_HEADER_PATHS += $(NRF_BASE_DIR)lib/
+REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)drivers/*/))
+REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/*/))
+REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/simple_ble/*/))
+REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/simple_logger/*/))
+REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/simple_thread/*/))
+REPO_HEADER_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/google_cloud/*/))
+REPO_HEADER_PATHS += $(NRF_BASE_DIR)lib/nanopb/
+REPO_SOURCE_PATHS += $(NRF_BASE_DIR)lib/
+REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)drivers/*/))
+REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/*/))
+REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/simple_ble/*/))
+REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/simple_logger/*/))
+REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/simple_thread/*/))
+REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/google_cloud/*/))
+REPO_SOURCE_PATHS += $(NRF_BASE_DIR)lib/nanopb/
 REPO_SOURCE_PATHS += $(PROTO_DIRS)
-REPO_HEADER_PATHS += $(NRF_BASE_DIR)/lib/CMSIS_5/CMSIS/Core/Include/
-REPO_HEADER_PATHS += $(NRF_BASE_DIR)/lib/CMSIS_5/CMSIS/DSP/Include/
+REPO_HEADER_PATHS += $(NRF_BASE_DIR)lib/CMSIS_5/CMSIS/Core/Include/
+REPO_HEADER_PATHS += $(NRF_BASE_DIR)lib/CMSIS_5/CMSIS/DSP/Include/
 
 # ---- CMSIS DSP Library
 ifeq ($(USE_DSP), 1)
-  REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)/lib/CMSIS_5/CMSIS/DSP/Source/*/))
+  REPO_SOURCE_PATHS += $(dir $(wildcard $(NRF_BASE_DIR)lib/CMSIS_5/CMSIS/DSP/Source/*/))
   #REPO_SOURCES = $(notdir $(wildcard $(NRF_BASE_DIR)lib/CMSIS_5/CMSIS/DSP/Source/*/arm*.c))
   REPO_SOURCES += BasicMathFunctions.c
   REPO_SOURCES += MatrixFunctions.c
@@ -47,9 +47,9 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
 
     # Set the path
     ifeq ($(USE_THREAD), 1)
-      SDK_ROOT = $(NRF_BASE_DIR)/sdk/nrf5_sdk_15.3.0_thread/
+      SDK_ROOT = $(NRF_BASE_DIR)sdk/nrf5_sdk_15.3.0_thread/
     else
-      SDK_ROOT = $(NRF_BASE_DIR)/sdk/nrf5_sdk_15.3.0/
+      SDK_ROOT = $(NRF_BASE_DIR)sdk/nrf5_sdk_15.3.0/
     endif
 
     MBR_PATH ?= $(SDK_ROOT)components/softdevice/mbr/$(NRF_IC)/hex/mbr_$(NRF_MODEL)_$(MBR_VERSION)_mbr.hex
@@ -77,9 +77,9 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
     SDK_LINKER_PATHS += $(SDK_ROOT)modules/nrfx/mdk/
 
     # Path for default sdk_config.h
-    SDK_CONFIG_DEFAULT ?= $(NRF_BASE_DIR)/make/config/$(NRF_IC)/config/
+    SDK_CONFIG_DEFAULT ?= $(NRF_BASE_DIR)make/config/$(NRF_IC)/config/
     SDK_HEADER_PATHS += $(SDK_CONFIG_DEFAULT)
-    #SDK_HEADER_PATHS += $(NRF_BASE_DIR)/make/config/$(NRF_IC)/config/
+    #SDK_HEADER_PATHS += $(NRF_BASE_DIR)make/config/$(NRF_IC)/config/
 
     # Need to add the paths for all the directories in the SDK.
     # Note that we do not use * because some folders have conflicting files.
@@ -389,11 +389,11 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
 
     # Set the path
     ifeq ($(USE_THREAD), 1)
-      SDK_ROOT = $(NRF_BASE_DIR)/sdk/nrf5_sdk_16.0.0_thread/
+      SDK_ROOT = $(NRF_BASE_DIR)sdk/nrf5_sdk_16.0.0_thread/
     else ifeq ($(USE_ZIGBEE), 1)
-      SDK_ROOT = $(NRF_BASE_DIR)/sdk/nrf5_sdk_16.0.0_thread/
+      SDK_ROOT = $(NRF_BASE_DIR)sdk/nrf5_sdk_16.0.0_thread/
     else
-      SDK_ROOT = $(NRF_BASE_DIR)/sdk/nrf5_sdk_16.0.0/
+      SDK_ROOT = $(NRF_BASE_DIR)sdk/nrf5_sdk_16.0.0/
     endif
 
     MBR_PATH ?= $(SDK_ROOT)components/softdevice/mbr/hex/mbr_$(NRF_MODEL)_$(MBR_VERSION)_mbr.hex
@@ -423,9 +423,9 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
     SDK_LINKER_PATHS += $(SDK_ROOT)modules/nrfx/mdk/
 
     # Path for default sdk_config.h
-    SDK_CONFIG_DEFAULT ?= $(NRF_BASE_DIR)/make/config/$(NRF_IC)/config/
+    SDK_CONFIG_DEFAULT ?= $(NRF_BASE_DIR)make/config/$(NRF_IC)/config/
     SDK_HEADER_PATHS += $(SDK_CONFIG_DEFAULT)
-    #SDK_HEADER_PATHS += $(NRF_BASE_DIR)/make/config/$(NRF_IC)/config/
+    #SDK_HEADER_PATHS += $(NRF_BASE_DIR)make/config/$(NRF_IC)/config/
 
     # Need to add the paths for all the directories in the SDK.
     # Note that we do not use * because some folders have conflicting files.
@@ -542,8 +542,8 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
     SDK_HEADER_PATHS += $(SDK_ROOT)components/softdevice/common/
     SDK_HEADER_PATHS += $(SDK_ROOT)external/cifra_AES128-EAX/
     SDK_HEADER_PATHS += $(SDK_ROOT)external/nrf_tls/
-    SDK_HEADER_PATHS += $(SDK_ROOT)/external/fatfs/port/
-    SDK_HEADER_PATHS += $(SDK_ROOT)/external/fatfs/src/
+    SDK_HEADER_PATHS += $(SDK_ROOT)external/fatfs/port/
+    SDK_HEADER_PATHS += $(SDK_ROOT)external/fatfs/src/
 
     SDK_SOURCE_PATHS += $(SDK_ROOT)components/
     SDK_SOURCE_PATHS += $(SDK_ROOT)modules/nrfx/
@@ -559,8 +559,8 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
     SDK_SOURCE_PATHS += $(SDK_ROOT)components/libraries/atomic_flags/
     SDK_SOURCE_PATHS += $(SDK_ROOT)components/libraries/balloc/
     SDK_SOURCE_PATHS += $(SDK_ROOT)components/libraries/block_dev/
-    APP_SOURCE_PATHS += $(SDK_ROOT)/components/libraries/block_dev/ram/
-    APP_SOURCE_PATHS += $(SDK_ROOT)/components/libraries/block_dev/qspi/
+    APP_SOURCE_PATHS += $(SDK_ROOT)components/libraries/block_dev/ram/
+    APP_SOURCE_PATHS += $(SDK_ROOT)components/libraries/block_dev/qspi/
     SDK_SOURCE_PATHS += $(SDK_ROOT)components/libraries/bootloader/
     SDK_SOURCE_PATHS += $(SDK_ROOT)components/libraries/bootloader/dfu/
     SDK_SOURCE_PATHS += $(SDK_ROOT)components/iot/background_dfu/
@@ -629,8 +629,8 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
     SDK_SOURCE_PATHS += $(SDK_ROOT)external/fprintf/
     SDK_SOURCE_PATHS += $(SDK_ROOT)external/segger_rtt/
     SDK_SOURCE_PATHS += $(SDK_ROOT)external/cifra_AES128-EAX/
-    SDK_SOURCE_PATHS += $(SDK_ROOT)/external/fatfs/port/
-    SDK_SOURCE_PATHS += $(SDK_ROOT)/external/fatfs/src/
+    SDK_SOURCE_PATHS += $(SDK_ROOT)external/fatfs/port/
+    SDK_SOURCE_PATHS += $(SDK_ROOT)external/fatfs/src/
 
     ifdef SERIALIZATION_MODE
       SDK_HEADER_PATHS += $(wildcard $(SDK_ROOT)components/serialization/*/)
@@ -765,19 +765,19 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
 
 
     ifeq ($(USE_ZIGBEE), 1)
-      SDK_SOURCE_PATHS += $(SDK_ROOT)/external/zboss/zb_error
-      SDK_SOURCE_PATHS += $(SDK_ROOT)/external/zboss/osif
-      SDK_SOURCE_PATHS += $(SDK_ROOT)/external/zboss/addons/zcl
+      SDK_SOURCE_PATHS += $(SDK_ROOT)external/zboss/zb_error
+      SDK_SOURCE_PATHS += $(SDK_ROOT)external/zboss/osif
+      SDK_SOURCE_PATHS += $(SDK_ROOT)external/zboss/addons/zcl
       SDK_SOURCE_PATHS += $(wildcard $(SDK_ROOT)components/zigbee/*/)
-      SDK_SOURCE_PATHS += $(SDK_ROOT)/external/nRF-IEEE-802.15.4-radio-driver/src
+      SDK_SOURCE_PATHS += $(SDK_ROOT)external/nRF-IEEE-802.15.4-radio-driver/src
 
-      SDK_HEADER_PATHS += $(SDK_ROOT)/external/zboss/osif
-      SDK_HEADER_PATHS += $(SDK_ROOT)/external/zboss/include
-      SDK_HEADER_PATHS += $(dir $(wildcard $(SDK_ROOT)/external/zboss/include/*/))
-      SDK_HEADER_PATHS += $(SDK_ROOT)/external/zboss/addons
-      SDK_HEADER_PATHS += $(SDK_ROOT)/external/zboss/zb_error
+      SDK_HEADER_PATHS += $(SDK_ROOT)external/zboss/osif
+      SDK_HEADER_PATHS += $(SDK_ROOT)external/zboss/include
+      SDK_HEADER_PATHS += $(dir $(wildcard $(SDK_ROOT)external/zboss/include/*/))
+      SDK_HEADER_PATHS += $(SDK_ROOT)external/zboss/addons
+      SDK_HEADER_PATHS += $(SDK_ROOT)external/zboss/zb_error
       SDK_HEADER_PATHS += $(wildcard $(SDK_ROOT)components/zigbee/*/)
-      SDK_HEADER_PATHS += $(SDK_ROOT)/external/nRF-IEEE-802.15.4-radio-driver/src
+      SDK_HEADER_PATHS += $(SDK_ROOT)external/nRF-IEEE-802.15.4-radio-driver/src
 
       LIBS += $(NRF_SECURITY)lib/libmbedcrypto_glue.a
       LIBS += $(NRF_SECURITY)lib/libmbedcrypto_glue_cc310.a
@@ -792,13 +792,13 @@ ifneq (,$(filter $(NRF_IC),nrf52832 nrf52833 nrf52840))
       LIBS += $(SDK_ROOT)external/nrf_cc310_bl/lib/cortex-m4/hard-float/libnrf_cc310_bl_0.9.12.a
 
     ifeq ($(ZIGBEE_ED), 1)
-      LIBS += $(SDK_ROOT)/external/zboss/lib/gcc/libzboss.ed.a
+      LIBS += $(SDK_ROOT)external/zboss/lib/gcc/libzboss.ed.a
       SDK_VARS += ZB_ED_ROLE
     else
-      LIBS += $(SDK_ROOT)/external/zboss/lib/gcc/libzboss.a
+      LIBS += $(SDK_ROOT)external/zboss/lib/gcc/libzboss.a
     endif
 
-      LIBS += $(SDK_ROOT)/external/zboss/lib/gcc/nrf52840/nrf_radio_driver.a
+      LIBS += $(SDK_ROOT)external/zboss/lib/gcc/nrf52840/nrf_radio_driver.a
 
       SDK_VARS += ZB_TRACE_LEVEL=0 ZB_TRACE_MASK=0
 
@@ -836,4 +836,3 @@ OBJS_AS = $(addprefix $(BUILDDIR), $(SOURCES_AS:.S=.os))
 DEBUG_OBJS_AS = $(addprefix $(BUILDDIR), $(SOURCES_AS:.S=.os-debug))
 
 endif
-
